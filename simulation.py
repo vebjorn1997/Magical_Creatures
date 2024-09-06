@@ -7,12 +7,12 @@ def logistics_equation(growth_rate: float, pop_at_time: float) -> float:
 def calculate_population(
     growt_rate: float, pop_at_time: float, num_generations: int
 ) -> dict[int, float]:
-    generational_population_data = {0: pop_at_time}
+    generational_population_data = {0: f"{pop_at_time:.3f}"}
     population = pop_at_time
 
     for generation in range(num_generations):
         population = logistics_equation(growt_rate, population)
-        generational_population_data[generation + 1] = population
+        generational_population_data[generation + 1] = f"{population:.3f}"
 
     return generational_population_data
 
@@ -46,7 +46,7 @@ def main():
         json.dump(population_data, file, indent=4)
 
     for key, value in population_data.items():
-        print(f"Generation {key}: {value:.3f}")
+        print(f"Generation {key}: {value}")
 
 
 if __name__ == "__main__":
