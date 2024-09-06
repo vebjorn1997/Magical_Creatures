@@ -39,10 +39,10 @@ def main():
     population = get_validated_user_input(float, "Enter the initial population: ", 0, 1)
     growth_rate = get_validated_user_input(float, "Enter the growth rate: ", 0, 4)
     num_generations = get_validated_user_input(int, "Enter the number of generations: ")
-    output_file = input("Enter the name of the output file (please specify file extension): ")
+    output_file = input("Enter the name of the output file: ")
 
     population_data = calculate_population(growth_rate, population, num_generations)
-    with open(output_file, "w", encoding="utf-8") as file:
+    with open(f"{output_file}.json", "w", encoding="utf-8") as file:
         json.dump(population_data, file, indent=4)
 
     for key, value in population_data.items():
